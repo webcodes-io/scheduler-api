@@ -2,10 +2,10 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const mock = require('../test/mock');
-const updateCompany = require('../controllers/update-company');
+const updateEmployee = require('../controllers/update-employee');
 const db = require('../db/init');
 
-describe('update company', () => {
+describe('update employee', () => {
     let querySpy = sinon.spy();
     beforeEach(() => {
         sinon.stub(db, 'init').resolves({
@@ -16,15 +16,15 @@ describe('update company', () => {
         querySpy.resetHistory();
         db.init.restore();
     });
-    it('was able to update company', async () => {
+    it('was able to update employee', async () => {
         const mockLambdaCallback = sinon.spy();
-        const companyId = 1;
-        await updateCompany.update({...mock.updateEventMock, path: {id: companyId}}, {}, mockLambdaCallback);
+        const employeeId = 1;
+        await updateEmployee.update({...mock.eventMock, path: {id: employeeId}}, {}, mockLambdaCallback);
         expect(querySpy.calledOnce).to.be.true;
     });
-    it('was not able to update company', async () => {
+    it('was not able to update employee', async () => {
         const mockLambdaCallback = sinon.spy();
-        await updateCompany.update({...mock.updateEventMock, path: {id: undefined}}, {}, mockLambdaCallback);
+        await updateEmployee.update({...mock.emptyEventMock, path: {id: undefined}}, {}, mockLambdaCallback);
         expect(querySpy.calledOnce).to.be.false;
     });
 });

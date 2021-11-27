@@ -12,7 +12,7 @@ module.exports.delete = async (event) => {
       body: 'Please specify all parameters of request',
     };
   }
-  /** Delete company **/
+  /** Delete employee **/
   const text = 'delete from employees where id = $1 RETURNING *';
   const results = await client.query(text, [employeeId]);
   if(results && results.rows) return results.rows;

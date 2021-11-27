@@ -5,7 +5,7 @@ module.exports.update = async (event, context, callback) => {
   const client = await db.init();
   let data;
 
-  const companyId = event.path.id;
+  const employeeId = event.path.id;
   if(typeof event.body === 'string') {
     data = JSON.parse(event.body);
   } else {
@@ -31,7 +31,7 @@ module.exports.update = async (event, context, callback) => {
       body: 'Please specify all parameters of request',
     };
   }
-  /** Update company **/
+  /** Update employee **/
   const text = `update employees set
   first_name = ($1), 
   last_name = ($2), 
@@ -58,7 +58,7 @@ module.exports.update = async (event, context, callback) => {
     data.skills,
     data.availability,
     data.score,
-    companyId
+    employeeId
   ];
   const results = await client.query(text, values);
   if(results && results.rows) return results.rows;

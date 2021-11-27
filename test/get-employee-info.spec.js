@@ -1,10 +1,10 @@
 'use strict';
 const expect = require('chai').expect;
 const sinon = require('sinon');
-const getCompany = require('../controllers/get-company-info');
+const getEmployee = require('../controllers/get-employee-info');
 const db = require('../db/init');
 
-describe('get company', () => {
+describe('get employee', () => {
     let querySpy = sinon.spy();
     beforeEach(() => {
         sinon.stub(db, 'init').resolves({
@@ -15,15 +15,15 @@ describe('get company', () => {
         querySpy.resetHistory();
         db.init.restore();
     });
-    it('was able to get company information', async () => {
+    it('was able to get employee information', async () => {
         const mockLambdaCallback = sinon.spy();
-        const companyId = 1;
-        await getCompany.getByCompanyId({ path: { id: companyId } }, {}, mockLambdaCallback);
+        const employeeId = 1;
+        await getEmployee.getByEmployeeId({ path: { id: employeeId } }, {}, mockLambdaCallback);
         expect(querySpy.calledOnce).to.be.true;
     });
-    it('was not able to get company information', async () => {
+    it('was not able to get employee information', async () => {
         const mockLambdaCallback = sinon.spy();
-        await getCompany.getByCompanyId({path: {id: undefined}}, {}, mockLambdaCallback);
+        await getEmployee.getByEmployeeId({path: {id: undefined}}, {}, mockLambdaCallback);
         expect(querySpy.calledOnce).to.be.false;
     });
 });

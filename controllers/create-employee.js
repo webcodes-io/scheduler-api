@@ -27,10 +27,10 @@ module.exports.create = async (event) => {
     return {
       statusCode: 400,
       headers: { 'Content-Type': 'application/json' },
-      body: 'Couldn\'t create the company item. Insufficient data',
+      body: 'Couldn\'t create the employee item. Insufficient data',
     };
   }
-  /** Save company **/
+  /** Save employee **/
   const text = `insert into employees(
     first_name,
     last_name,

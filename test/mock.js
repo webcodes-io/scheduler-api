@@ -3,16 +3,16 @@ const eventData = {
         availability: 'NA',
         city: 'Toronto',
         code: 'A1B2C3',
-        created: '11-23-2021',
-        first_name: 'John',
+        created: '2021-11-21T06:13:20.270Z',
+        firstName: 'John',
         id: 1,
-        last_name: 'McCrae',
+        lastName: 'McCrae',
         phone: '123-456-7890',
         score: '5',
         skills: 'poet',
         state: 'ON',
         street: 'unknown',
-        updated: '11-23-2021'
+        updated: '2021-11-21T06:13:20.270Z'
 };
 
 // appartement: "1605"
@@ -33,18 +33,7 @@ const eventData = {
 const eventMock = {
     body: JSON.stringify(eventData)
 };
-const updateEventData = {
-    "name": "Coldplay",
-    "locationCity": "London",
-    "locationState": "England",
-    "foundedDate": "1996",
-    "founderFullName":"Chris Martin",
-    "founderPosition":"singer",
-    "description": "The band consists of vocalist, rhythm guitarist, and pianist Chris Martin; lead guitarist Jonny Buckland;"
-}
-const updateEventMock = {
-    body: JSON.stringify(updateEventData)
-};
+
 const emptyEventMock = {
     body: undefined
 };
@@ -52,7 +41,5 @@ const emptyEventMock = {
 module.exports = {
     eventData,
     eventMock,
-    emptyEventMock,
-    updateEventData,
-    updateEventMock
+    emptyEventMock
 }
