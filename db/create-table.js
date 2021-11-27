@@ -21,7 +21,7 @@ module.exports.init = async (client) => {
         if(err) {
             console.log(err);
         } else {
-            console.log('Table "companies_info" created');
+            console.log('Table "employees" created');
         }
     })
 }

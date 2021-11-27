@@ -53,7 +53,7 @@ functions:
           cors: true
           integration: LAMBDA
 
-  getByCompanyId:
+  getByEmployeeId:
     handler: controllers/get-employee-info.getByEmployeeId
     events:
       - http:
