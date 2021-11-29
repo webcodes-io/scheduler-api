@@ -1,4 +1,5 @@
 'use strict';
+const utilService = require('../services/utils');
 const db = require('../db/init');
 
 module.exports.create = async (event) => {
@@ -57,6 +58,8 @@ module.exports.create = async (event) => {
     data.availability,
     data.score
   ];
-  const results = await client.query(text, values);
-  if(results && results.rows) return results.rows;
+  const queryResult = await client.query(text, values);
+  if(queryResult && queryResult.rows.length > 0) {
+    return utilService.mapResponseObject(queryResult.rows[0]);
+  }
 };

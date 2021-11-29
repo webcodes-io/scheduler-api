@@ -23,8 +23,26 @@ const emptyEventMock = {
     body: undefined
 };
 
+const responseData = {
+    id: 9,
+    first_name: "Mark",
+    last_name: "Hilton",
+    appartement: "3102",
+    street: "Rogers",
+    city: "Toronto",
+    state: "ON",
+    code: "M2B9G11",
+    phone: "4161234567",
+    skills: "designer",
+    availability: "any time",
+    score: "5",
+    created: "2021-11-27T22:06:07.363Z",
+    updated: "2021-11-27T22:06:07.363Z"
+};
+
 module.exports = {
     eventData,
     eventMock,
-    emptyEventMock
+    emptyEventMock,
+    responseData
 }

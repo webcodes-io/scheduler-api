@@ -5,10 +5,12 @@
   "author": "",
   "license": "",
   "scripts": {
-    "test": "node_modules/.bin/mocha test"
+    "test": "node_modules/.bin/mocha test",
+    "migrate": "flyway -c conf/flyway.js migrate"
   },
   "dependencies": {
     "jsonwebtoken": "^8.1.0",
+    "node-flywaydb": "^3.0.7",
     "pg": "^8.7.1",
     "uuid": "^2.0.3"
   },

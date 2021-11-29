@@ -17,8 +17,28 @@ const deleteEmployee = (comps, compIndex) => {
 const updateEmployee = (comps, compIndex, updatedCompCont) => {
     comps.splice(compIndex, 1, updatedCompCont);
 }
+
+const mapResponseObject = (dbResponse) => {
+    return {
+        id: dbResponse.id,
+        firstName: dbResponse.first_name,
+        lastName: dbResponse.last_name,
+        appartement: dbResponse.appartement,
+        street: dbResponse.street,
+        city: dbResponse.city,
+        state: dbResponse.state,
+        code: dbResponse.code,
+        phone: dbResponse.phone,
+        skills: dbResponse.skills,
+        availability: dbResponse.availability,
+        score: dbResponse.score,
+        created: dbResponse.created,
+        updated: dbResponse.updated,
+    }
+}
 module.exports = {
     findEmployee,
     deleteEmployee,
-    updateEmployee
+    updateEmployee,
+    mapResponseObject
 }
