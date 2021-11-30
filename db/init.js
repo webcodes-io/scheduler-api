@@ -5,6 +5,7 @@ const tableAlter_2 = require('./modify-table-2');
 const tableAlter_3 = require('./modify-table-3');
 const tableAlter_4 = require('./modify-table-4');
 const tableAlter_5 = require('./modify-table-5');
+const tableAlter_6 = require('./modify-table-6');
 
 let ifClientConnected = false;
 const client = new Client({
@@ -27,6 +28,7 @@ module.exports.init = async () => {
             await tableAlter_3.modify(client);
             await tableAlter_4.modify(client);
             await tableAlter_5.modify(client);
+            await tableAlter_6.modify(client);
             return client;
         } catch (e) {
             console.error(e);

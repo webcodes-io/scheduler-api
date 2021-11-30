@@ -24,7 +24,7 @@ module.exports.update = async (event, context, callback) => {
       !data.phone ||
       !data.skills ||
       !data.availability ||
-      !data.score
+      !data.rate
   ) {
     return {
       statusCode: 400,
@@ -44,7 +44,7 @@ module.exports.update = async (event, context, callback) => {
   phone = ($8),
   skills = ($9),
   availability = ($10),
-  score = ($11),
+  rate = ($11),
   country = ($12)
   where id = ($13)
   RETURNING *`;
@@ -59,7 +59,7 @@ module.exports.update = async (event, context, callback) => {
     data.phone,
     data.skills,
     data.availability,
-    data.score,
+    data.rate,
     data.country,
     employeeId
   ];

@@ -32,7 +32,7 @@ const mapResponseObject = (dbResponse) => {
         phone: dbResponse.phone,
         skills: JSON.parse(dbResponse.skills),
         availability: JSON.parse(dbResponse.availability),
-        score: dbResponse.score,
+        rate: dbResponse.rate,
         created: dbResponse.created,
         updated: dbResponse.updated,
     }

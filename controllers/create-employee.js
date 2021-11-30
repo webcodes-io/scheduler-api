@@ -23,7 +23,7 @@ module.exports.create = async (event) => {
       !data.phone ||
       !data.skills ||
       !data.availability ||
-      !data.score ||
+      !data.rate ||
       !data.country
   ) {
     return {
@@ -44,7 +44,7 @@ module.exports.create = async (event) => {
     phone,
     skills,
     availability,
-    score,
+    rate,
     country
   ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`;
   const values = [
@@ -58,7 +58,7 @@ module.exports.create = async (event) => {
     data.phone,
     data.skills,
     data.availability,
-    data.score,
+    data.rate,
     data.country
   ];
   const queryResult = await client.query(text, values);

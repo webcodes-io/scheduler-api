@@ -1,6 +1,16 @@
 const eventData = {
         apartment: '210',
-        availability: 'NA',
+        availability: JSON.stringify([
+            {
+                "day": "Monday",
+                "intervals": [
+                    {
+                        "start": "9:00am",
+                        "end": "5:00pm"
+                    }
+                ]
+            }
+        ]),
         city: 'Toronto',
         country: 'Canada',
         created: '2021-11-21T06:13:20.270Z',
@@ -9,8 +19,11 @@ const eventData = {
         lastName: 'McCrae',
         phone: '123-456-7890',
         postalCode: 'A1B2C3',
-        score: '5',
-        skills: 'poet',
+        rate: '5',
+        skills: JSON.stringify([
+            "director",
+            "sales agent"
+        ]),
         state: 'ON',
         street: 'unknown',
         updated: '2021-11-21T06:13:20.270Z'
@@ -35,9 +48,22 @@ const responseData = {
     state: "ON",
     postalCode: "M2B9G11",
     phone: "4161234567",
-    skills: "designer",
-    availability: "any time",
-    score: "5",
+    skills: JSON.stringify([
+        "director",
+        "sales agent"
+    ]),
+    availability: JSON.stringify([
+        {
+            "day": "Monday",
+            "intervals": [
+                {
+                    "start": "9:00am",
+                    "end": "5:00pm"
+                }
+            ]
+        }
+    ]),
+    rate: "5",
     created: "2021-11-27T22:06:07.363Z",
     updated: "2021-11-27T22:06:07.363Z"
 };
