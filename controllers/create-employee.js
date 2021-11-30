@@ -15,15 +15,16 @@ module.exports.create = async (event) => {
       !data ||
       !data.firstName ||
       !data.lastName ||
-      !data.appartement ||
+      !data.apartment ||
       !data.street ||
       !data.city ||
       !data.state ||
-      !data.code ||
+      !data.postalCode ||
       !data.phone ||
       !data.skills ||
       !data.availability ||
-      !data.score
+      !data.score ||
+      !data.country
   ) {
     return {
       statusCode: 400,
@@ -35,28 +36,30 @@ module.exports.create = async (event) => {
   const text = `insert into employees(
     first_name,
     last_name,
-    appartement,
+    apartment,
     street,
     city,
     state,
-    code,
+    postal_code,
     phone,
     skills,
     availability,
-    score
-  ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`;
+    score,
+    country
+  ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`;
   const values = [
     data.firstName,
     data.lastName,
-    data.appartement,
+    data.apartment,
     data.street,
     data.city,
     data.state,
-    data.code,
+    data.postalCode,
     data.phone,
     data.skills,
     data.availability,
-    data.score
+    data.score,
+    data.country
   ];
   const queryResult = await client.query(text, values);
   if(queryResult && queryResult.rows.length > 0) {

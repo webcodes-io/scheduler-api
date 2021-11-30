@@ -5,8 +5,7 @@
   "author": "",
   "license": "",
   "scripts": {
-    "test": "node_modules/.bin/mocha test",
-    "migrate": "flyway -c conf/flyway.js migrate"
+    "test": "node_modules/.bin/mocha test"
   },
   "dependencies": {
     "jsonwebtoken": "^8.1.0",
