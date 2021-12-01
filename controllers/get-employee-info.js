@@ -1,5 +1,6 @@
 'use strict';
 const db = require('../db/init');
+const utilService = require('../services/utils');
 
 module.exports.getByEmployeeId = async (event) => {
   const client = await db.init();
@@ -18,6 +19,8 @@ module.exports.getByEmployeeId = async (event) => {
     text: 'SELECT * FROM employees WHERE id = $1',
     values: [employeeId],
   }
-  const results = await client.query(query);
-  if(results && results.rows) return results.rows[0];
+  const queryResult = await client.query(query);
+  if(queryResult && queryResult.rows.length > 0) {
+    return utilService.mapResponseObject(queryResult.rows[0]);
+  }
 };

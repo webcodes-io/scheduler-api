@@ -1,5 +1,5 @@
-module.exports.init = async (client) => {
-    await client.query(`
+module.exports.createTable = async (client) => {
+    return await client.query(`
     CREATE TABLE IF NOT EXISTS employees
     (
         id serial not null PRIMARY KEY,
