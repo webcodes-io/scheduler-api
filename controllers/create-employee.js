@@ -1,4 +1,5 @@
 'use strict';
+const utilService = require('../services/utils');
 const db = require('../db/init');
 
 module.exports.create = async (event) => {
@@ -14,15 +15,16 @@ module.exports.create = async (event) => {
       !data ||
       !data.firstName ||
       !data.lastName ||
-      !data.appartement ||
+      !data.apartment ||
       !data.street ||
       !data.city ||
       !data.state ||
-      !data.code ||
+      !data.postalCode ||
       !data.phone ||
       !data.skills ||
       !data.availability ||
-      !data.score
+      !data.rate ||
+      !data.country
   ) {
     return {
       statusCode: 400,
@@ -34,29 +36,33 @@ module.exports.create = async (event) => {
   const text = `insert into employees(
     first_name,
     last_name,
-    appartement,
+    apartment,
     street,
     city,
     state,
-    code,
+    postal_code,
     phone,
     skills,
     availability,
-    score
-  ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`;
+    rate,
+    country
+  ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`;
   const values = [
     data.firstName,
     data.lastName,
-    data.appartement,
+    data.apartment,
     data.street,
     data.city,
     data.state,
-    data.code,
+    data.postalCode,
     data.phone,
     data.skills,
     data.availability,
-    data.score
+    data.rate,
+    data.country
   ];
-  const results = await client.query(text, values);
-  if(results && results.rows) return results.rows;
+  const queryResult = await client.query(text, values);
+  if(queryResult && queryResult.rows.length > 0) {
+    return utilService.mapResponseObject(queryResult.rows[0]);
+  }
 };

@@ -6,24 +6,24 @@ const createEmployee = require('../controllers/create-employee');
 const db = require('../db/init');
 
 describe('create employee', () => {
-    let querySpy = sinon.spy();
+    const callback = sinon.stub();
+    callback.resolves({ rows: mock.responseData });
     beforeEach(() => {
         sinon.stub(db, 'init').resolves({
-            query: querySpy
+            query: () => Promise.resolve({ rows: [mock.responseData] })
         });
     });
     afterEach(() => {
-        querySpy.resetHistory();
         db.init.restore();
     });
     it('was able to create employee', async () => {
         const mockLambdaCallback = sinon.spy();
-        await createEmployee.create(mock.eventMock, {}, mockLambdaCallback);
-        expect(querySpy.calledOnce).to.be.true;
+        const response = await createEmployee.create(mock.eventMock, {}, mockLambdaCallback);
+        expect(response).to.include.keys('firstName', 'lastName');
     });
     it('was not able to create employee', async () => {
         const mockLambdaCallback = sinon.spy();
-        await createEmployee.create(mock.emptyEventMock, {}, mockLambdaCallback);
-        expect(querySpy.calledOnce).to.be.false;
+        const response = await createEmployee.create(mock.emptyEventMock, {}, mockLambdaCallback);
+        expect(response).to.include({statusCode: 400});
     });
 });

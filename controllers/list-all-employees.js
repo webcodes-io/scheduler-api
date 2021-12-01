@@ -8,6 +8,6 @@ module.exports.list = async (event) => {
   const results =  await client.query(text);
   if(results && results.rows) return results.rows;
   return {
-    message: "Hello world"
+    errorMessage: "Failed to fetch data from Table"
   }
 };
