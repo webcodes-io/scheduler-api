@@ -11,14 +11,6 @@ jest.mock('../db/init');
 // TODO: alternative way to mock module
 //  lambdaWrapper.init(liveFunction); // Run the deployed lambda
 
-// jest.mock('../db/init', () => ({
-//   default: () => ({
-//     query: () => ({
-//       rows: [queryResponseData]
-//     })
-//   })
-// }));
-
 describe('create', () => {
   it('implement tests here', async () => {
     const response = await create(eventMock);
