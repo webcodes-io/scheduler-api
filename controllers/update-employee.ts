@@ -1,11 +1,12 @@
 'use strict';
-const utilService = require('../services/utils');
-const db = require('../db/init');
+import { mapResponseObject } from '../services/utils';
+import dbService from "../db/init";
 
-module.exports.create = async (event) => {
-  const client = await db.init();
+export const update = async (event) => {
+  const client = await dbService.init();
   let data;
 
+  const employeeId = event.path.id;
   if(typeof event.body === 'string') {
     data = JSON.parse(event.body);
   } else {
@@ -23,30 +24,30 @@ module.exports.create = async (event) => {
       !data.phone ||
       !data.skills ||
       !data.availability ||
-      !data.rate ||
-      !data.country
+      !data.rate
   ) {
     return {
       statusCode: 400,
       headers: { 'Content-Type': 'application/json' },
-      body: 'Couldn\'t create the employee item. Insufficient data',
+      body: 'Please specify all parameters of request',
     };
   }
-  /** Save employee **/
-  const text = `insert into employees(
-    first_name,
-    last_name,
-    apartment,
-    street,
-    city,
-    state,
-    postal_code,
-    phone,
-    skills,
-    availability,
-    rate,
-    country
-  ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`;
+  /** Update employee **/
+  const text = `update employees set
+  first_name = ($1), 
+  last_name = ($2), 
+  apartment = ($3), 
+  street = ($4), 
+  city = ($5), 
+  state = ($6), 
+  postal_code = ($7),
+  phone = ($8),
+  skills = ($9),
+  availability = ($10),
+  rate = ($11),
+  country = ($12)
+  where id = ($13)
+  RETURNING *`;
   const values = [
     data.firstName,
     data.lastName,
@@ -59,10 +60,11 @@ module.exports.create = async (event) => {
     data.skills,
     data.availability,
     data.rate,
-    data.country
+    data.country,
+    employeeId
   ];
   const queryResult = await client.query(text, values);
   if(queryResult && queryResult.rows.length > 0) {
-    return utilService.mapResponseObject(queryResult.rows[0]);
+    return mapResponseObject(queryResult.rows[0]);
   }
 };

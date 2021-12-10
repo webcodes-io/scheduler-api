@@ -1,4 +1,4 @@
-module.exports.modify = async (client) => {
+const modify_3 = async (client) => {
     return await client.query(
         `ALTER TABLE employees RENAME code TO postal_code;`,
         (err, result) => {
@@ -9,3 +9,4 @@ module.exports.modify = async (client) => {
         }
     })
 }
+export default modify_3;

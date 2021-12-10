@@ -4,7 +4,8 @@ service: scheduler-api
 frameworkVersion: '2'
 
 plugins:
-  - serverless-mocha-plugin
+  - serverless-jest-plugin
+  - serverless-plugin-typescript
   - serverless-offline
 
 provider:
@@ -72,7 +73,7 @@ functions:
           integration: LAMBDA
 
   delete:
-    handler: controllers/delete-employee.delete
+    handler: controllers/delete-employee.deleteEmployeeInfo
     events:
       - http:
           path: employee/{id}

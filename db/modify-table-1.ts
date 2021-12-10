@@ -1,6 +1,6 @@
-module.exports.modify = async (client) => {
+const modify_1 = async (client) => {
     return await client.query(
-        `ALTER TABLE employees RENAME score TO rate;`,
+        `ALTER TABLE employees RENAME appartement TO apartment;`,
         (err, result) => {
         if(err) {
             console.log(err);
@@ -9,3 +9,4 @@ module.exports.modify = async (client) => {
         }
     })
 }
+export default modify_1;

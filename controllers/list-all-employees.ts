@@ -1,8 +1,8 @@
 'use strict';
-const db = require('../db/init');
+import dbService from "../db/init";
 
-module.exports.list = async (event) => {
-  const client = await db.init();
+export const list = async (event) => {
+  const client = await dbService.init();
 
   const text = 'select * from employees';
   const results =  await client.query(text);

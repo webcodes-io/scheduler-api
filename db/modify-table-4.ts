@@ -1,6 +1,6 @@
-module.exports.modify = async (client) => {
+const modify_4 = async (client) => {
     return await client.query(
-        `ALTER TABLE employees ADD COLUMN country varchar(100);`,
+        `ALTER TABLE employees ALTER skills TYPE jsonb;`,
         (err, result) => {
         if(err) {
             console.log(err);
@@ -9,3 +9,4 @@ module.exports.modify = async (client) => {
         }
     })
 }
+export default modify_4;
