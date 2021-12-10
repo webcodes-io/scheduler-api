@@ -1,7 +1,7 @@
 'use strict';
 import dbService from "../db/init";
 
-module.exports.list = async (event) => {
+export const list = async (event) => {
   const client = await dbService.init();
 
   const text = 'select * from employees';

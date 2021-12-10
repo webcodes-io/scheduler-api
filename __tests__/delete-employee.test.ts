@@ -1,6 +1,6 @@
 'use strict';
 import {mappedResponseData, queryResponseData} from '../mocks/mock';
-import deleteEmployeeInfo from '../controllers/delete-employee';
+import {deleteEmployeeInfo} from '../controllers/delete-employee';
 
 // mock is in __mock__ folder
 jest.mock('../db/init');

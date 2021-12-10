@@ -8,29 +8,33 @@ import modify_5 from './modify-table-5';
 import modify_6 from './modify-table-6';
 
 let ifClientConnected = false;
-const client = new Client({
-    host: process.env.POSTGRESQL_HOST,
-    port: process.env.POSTGRESQL_PORT,
-    database: process.env.DB_NAME,
-    user: process.env.USERNAME,
-    password: process.env.PASSWORD
-});
+
 class DBService {
+    client: any;
+    constructor() {
+        this.client = new Client({
+            host: process.env.POSTGRESQL_HOST,
+            port: process.env.POSTGRESQL_PORT,
+            database: process.env.DB_NAME,
+            user: process.env.USERNAME,
+            password: process.env.PASSWORD
+        });
+    }
     async init() {
-        if(client && ifClientConnected) {
-            return client;
+        if(this.client && ifClientConnected) {
+            return this.client;
         } else {
             try {
-                await client.connect();
+                await this.client.connect();
                 ifClientConnected = true;
-                await createTable(client);
-                await modify_1(client);
-                await modify_2(client);
-                await modify_3(client);
-                await modify_4(client);
-                await modify_5(client);
-                await modify_6(client);
-                return client;
+                await createTable(this.client);
+                await modify_1(this.client);
+                await modify_2(this.client);
+                await modify_3(this.client);
+                await modify_4(this.client);
+                await modify_5(this.client);
+                await modify_6(this.client);
+                return this.client;
             } catch (e) {
                 console.error(e);
             }

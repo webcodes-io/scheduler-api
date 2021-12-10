@@ -2,7 +2,7 @@
 import { mapResponseObject } from '../services/utils';
 import dbService from "../db/init";
 
-const update = async (event) => {
+export const update = async (event) => {
   const client = await dbService.init();
   let data;
 
@@ -40,7 +40,7 @@ const update = async (event) => {
   street = ($4), 
   city = ($5), 
   state = ($6), 
-  postalCode = ($7),
+  postal_code = ($7),
   phone = ($8),
   skills = ($9),
   availability = ($10),
@@ -68,4 +68,3 @@ const update = async (event) => {
     return mapResponseObject(queryResult.rows[0]);
   }
 };
-export default update;

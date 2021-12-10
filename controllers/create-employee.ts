@@ -2,7 +2,7 @@
 import { mapResponseObject } from '../services/utils';
 import dbService from '../db/init';
 
-const create = async (event) => {
+export const create = async (event) => {
   const client = await dbService.init();
   let data;
 
@@ -66,4 +66,4 @@ const create = async (event) => {
     return mapResponseObject(queryResult.rows[0]);
   }
 };
-export default create;
+

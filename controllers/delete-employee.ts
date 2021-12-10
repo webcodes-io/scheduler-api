@@ -2,7 +2,7 @@
 import { mapResponseObject } from '../services/utils';
 import dbService from "../db/init";
 
-const deleteEmployeeInfo = async (event) => {
+export const deleteEmployeeInfo = async (event) => {
   const client = await dbService.init();
   const employeeId = event.path.id;
   if(!employeeId) {
@@ -19,4 +19,3 @@ const deleteEmployeeInfo = async (event) => {
     return mapResponseObject(results.rows[0]);
   }
 };
-export default deleteEmployeeInfo;

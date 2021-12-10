@@ -2,7 +2,7 @@
 import { mapResponseObject } from '../services/utils';
 import dbService from "../db/init";
 
-const getByEmployeeId = async (event) => {
+export const getByEmployeeId = async (event) => {
   const client = await dbService.init();
 
   const employeeId = event.path.id;
@@ -24,4 +24,3 @@ const getByEmployeeId = async (event) => {
     return mapResponseObject(queryResult.rows[0]);
   }
 };
-export default getByEmployeeId;

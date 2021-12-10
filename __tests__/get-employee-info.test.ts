@@ -1,6 +1,6 @@
 'use strict';
 import {eventMock, mappedResponseData, emptyEventMock, queryResponseData} from '../mocks/mock';
-import getByEmployeeId from '../controllers/get-employee-info';
+import {getByEmployeeId} from '../controllers/get-employee-info';
 
 // mock is in __mock__ folder
 jest.mock('../db/init');
