@@ -1,4 +1,4 @@
-const eventData = {
+export const eventData = {
         apartment: '210',
         availability: JSON.stringify([
             {
@@ -29,15 +29,15 @@ const eventData = {
         updated: '2021-11-21T06:13:20.270Z'
 };
 
-const eventMock = {
+export const eventMock = {
     body: JSON.stringify(eventData)
 };
 
-const emptyEventMock = {
+export const emptyEventMock = {
     body: undefined
 };
 
-const responseData = {
+export const queryResponseData = {
     id: 9,
     first_name: "Mark",
     last_name: "Hilton",
@@ -68,9 +68,32 @@ const responseData = {
     updated: "2021-11-27T22:06:07.363Z"
 };
 
-module.exports = {
-    eventData,
-    eventMock,
-    emptyEventMock,
-    responseData
+export const mappedResponseData = {
+    "id": 9,
+    "firstName": "Mark",
+    "lastName": "Hilton",
+    "apartment": "3102",
+    "street": "Rogers",
+    "city": "Toronto",
+    "state": "ON",
+    "country": "Canada",
+    "phone": "4161234567",
+    "skills": [
+        "director",
+        "sales agent"
+    ],
+    "availability": [
+        {
+            "day": "Monday",
+            "intervals": [
+                {
+                    "start": "9:00am",
+                    "end": "5:00pm"
+                }
+            ]
+        }
+    ],
+    "rate": "5",
+    "created": "2021-11-27T22:06:07.363Z",
+    "updated": "2021-11-27T22:06:07.363Z"
 }

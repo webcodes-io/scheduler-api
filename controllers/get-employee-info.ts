@@ -1,9 +1,9 @@
 'use strict';
-const db = require('../db/init');
-const utilService = require('../services/utils');
+import { mapResponseObject } from '../services/utils';
+import dbService from "../db/init";
 
-module.exports.getByEmployeeId = async (event) => {
-  const client = await db.init();
+export const getByEmployeeId = async (event) => {
+  const client = await dbService.init();
 
   const employeeId = event.path.id;
   if(!employeeId) {
@@ -21,6 +21,6 @@ module.exports.getByEmployeeId = async (event) => {
   }
   const queryResult = await client.query(query);
   if(queryResult && queryResult.rows.length > 0) {
-    return utilService.mapResponseObject(queryResult.rows[0]);
+    return mapResponseObject(queryResult.rows[0]);
   }
 };

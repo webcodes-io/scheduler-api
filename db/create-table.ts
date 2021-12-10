@@ -1,4 +1,4 @@
-module.exports.createTable = async (client) => {
+const createTable = async (client) => {
     return await client.query(`
     CREATE TABLE IF NOT EXISTS employees
     (
@@ -25,3 +25,4 @@ module.exports.createTable = async (client) => {
         }
     })
 }
+export default createTable;

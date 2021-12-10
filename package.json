@@ -5,20 +5,26 @@
   "author": "",
   "license": "",
   "scripts": {
-    "test": "node_modules/.bin/mocha test"
+    "test": "node_modules/.bin/jest",
+    "start": "sls offline",
+    "build": "tsc"
   },
   "dependencies": {
     "jsonwebtoken": "^8.1.0",
     "pg": "^8.7.1",
+    "typescript": "^4.5.2",
     "uuid": "^2.0.3"
   },
   "devDependencies": {
+    "@types/jest": "^27.0.3",
     "aws-sdk-mock": "^5.1.0",
     "husky": "^7.0.1",
-    "mocha": "^9.1.2",
-    "serverless-mocha-plugin": "^1.12.0",
+    "jest": "^27.4.3",
+    "serverless-jest-plugin": "^0.4.0",
     "serverless-offline": "^8.3.0",
-    "sinon": "^9.0.2"
+    "serverless-plugin-typescript": "^2.1.0",
+    "ts-jest": "^27.1.0",
+    "ts-node": "^10.4.0"
   },
   "husky": {
     "hooks": {

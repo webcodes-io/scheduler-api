@@ -1,9 +1,9 @@
 'use strict';
-const db = require('../db/init');
+import { mapResponseObject } from '../services/utils';
+import dbService from "../db/init";
 
-module.exports.delete = async (event) => {
-  const client = await db.init();
-
+export const deleteEmployeeInfo = async (event) => {
+  const client = await dbService.init();
   const employeeId = event.path.id;
   if(!employeeId) {
     return {
@@ -15,5 +15,7 @@ module.exports.delete = async (event) => {
   /** Delete employee **/
   const text = 'delete from employees where id = $1 RETURNING *';
   const results = await client.query(text, [employeeId]);
-  if(results && results.rows) return results.rows;
+  if(results && results.rows.length > 0) {
+    return mapResponseObject(results.rows[0]);
+  }
 };

@@ -1,14 +1,14 @@
 // Reusable Authorizer function, set on `authorizer` field in serverless.yml
-module.exports.auth = (event, context, callback) => {
+const auth = (event, context, callback) => {
     // Policy helper function
     const generatePolicy = (principalId, effect, resource) => {
-        const authResponse = {};
+        const authResponse: any = {};
         authResponse.principalId = principalId;
         if (effect && resource) {
-            const policyDocument = {};
+            const policyDocument: any = {};
             policyDocument.Version = '2012-10-17';
             policyDocument.Statement = [];
-            const statementOne = {};
+            const statementOne: any = {};
             statementOne.Action = 'execute-api:Invoke';
             statementOne.Effect = effect;
             statementOne.Resource = resource;
@@ -20,3 +20,4 @@ module.exports.auth = (event, context, callback) => {
     const harcodedUserId = 'default';
     return callback(null, generatePolicy(harcodedUserId, 'Allow', event.methodArn));
 };
+export default auth;
