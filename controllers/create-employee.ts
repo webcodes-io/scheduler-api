@@ -21,6 +21,8 @@ export const create = async (event) => {
       !data.state ||
       !data.postalCode ||
       !data.phone ||
+      !data.mobile ||
+      !data.email ||
       !data.skills ||
       !data.availability ||
       !data.rate ||
@@ -42,11 +44,13 @@ export const create = async (event) => {
     state,
     postal_code,
     phone,
+    mobile,
+    email,
     skills,
     availability,
     rate,
     country
-  ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`;
+  ) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *`;
   const values = [
     data.firstName,
     data.lastName,
@@ -56,6 +60,8 @@ export const create = async (event) => {
     data.state,
     data.postalCode,
     data.phone,
+    data.mobile,
+    data.email,
     data.skills,
     data.availability,
     data.rate,
