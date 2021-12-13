@@ -22,6 +22,8 @@ export const update = async (event) => {
       !data.state ||
       !data.postalCode ||
       !data.phone ||
+      !data.mobile ||
+      !data.email ||
       !data.skills ||
       !data.availability ||
       !data.rate
@@ -42,11 +44,13 @@ export const update = async (event) => {
   state = ($6), 
   postal_code = ($7),
   phone = ($8),
-  skills = ($9),
-  availability = ($10),
-  rate = ($11),
-  country = ($12)
-  where id = ($13)
+  mobile = ($9),
+  email = ($10),
+  skills = ($11),
+  availability = ($12),
+  rate = ($13),
+  country = ($14),
+  where id = ($15)
   RETURNING *`;
   const values = [
     data.firstName,
@@ -57,6 +61,8 @@ export const update = async (event) => {
     data.state,
     data.postalCode,
     data.phone,
+    data.mobile,
+    data.email,
     data.skills,
     data.availability,
     data.rate,

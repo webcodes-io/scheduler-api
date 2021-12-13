@@ -18,6 +18,8 @@ export const eventData = {
         id: 1,
         lastName: 'McCrae',
         phone: '123-456-7890',
+        mobile: "4371234567",
+        email: "kuku@kuku.com",
         postalCode: 'A1B2C3',
         rate: '5',
         skills: JSON.stringify([
@@ -48,6 +50,8 @@ export const queryResponseData = {
     state: "ON",
     postalCode: "M2B9G11",
     phone: "4161234567",
+    mobile: "4371234567",
+    email: "kuku@kuku.com",
     skills: JSON.stringify([
         "director",
         "sales agent"
@@ -78,6 +82,8 @@ export const mappedResponseData = {
     "state": "ON",
     "country": "Canada",
     "phone": "4161234567",
+    "mobile": "4371234567",
+    "email": "kuku@kuku.com",
     "skills": [
         "director",
         "sales agent"

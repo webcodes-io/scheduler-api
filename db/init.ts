@@ -6,6 +6,7 @@ import modify_3 from './modify-table-3';
 import modify_4 from './modify-table-4';
 import modify_5 from './modify-table-5';
 import modify_6 from './modify-table-6';
+import modify_7 from './modify-table-7';
 
 let ifClientConnected = false;
 
@@ -34,6 +35,7 @@ class DBService {
                 await modify_4(this.client);
                 await modify_5(this.client);
                 await modify_6(this.client);
+                await modify_7(this.client);
                 return this.client;
             } catch (e) {
                 console.error(e);

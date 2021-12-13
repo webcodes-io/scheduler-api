@@ -30,6 +30,8 @@ export const mapResponseObject = (dbResponse) => {
         country: dbResponse.country,
         postalCode: dbResponse.postal_code,
         phone: dbResponse.phone,
+        mobile: dbResponse.mobile,
+        email: dbResponse.email,
         skills: JSON.parse(dbResponse.skills),
         availability: JSON.parse(dbResponse.availability),
         rate: dbResponse.rate,
